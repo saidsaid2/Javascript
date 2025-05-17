@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Welcome Message</title>
+        <script>
+            function createWelcomeMessage(){
+                const inputField = document.getElementById('nameInput');
+                const name = inputField.value.trim();
+                if (name.length > 3){
+                    const message = "Welcome to the Site" + name;
+                    const messageDive = document.getElementById('messageDiv');
+                    messageDive.innerHTML = "<p>" + message + "</p>";
+                }else {
+                    alert("Please Enter a Name Longer than 3 Characters");
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <form onsubmit="event.preventDefault(); createWelcomeMessage();">
+            <label for="nameInput">What is Your Name?</label>
+            <input type="text" id="nameInput" name="name"/>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="messageDiv"></div>
+    </body>
+</html>

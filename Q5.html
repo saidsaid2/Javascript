@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Send Message Form with Validation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white p-6 flex justify-center items-start min-h-screen">
+  <div class="max-w-md w-full bg-gray-100 p-6 rounded-md shadow-sm">
+    <h2 class="font-serif font-bold text-xl mb-4">Send Message</h2>
+    <form id="sendMessageForm" novalidate>
+      <label for="name" class="block text-xs font-serif mb-1">Name:</label>
+      <input id="name" name="name" type="text" class="w-full border border-gray-300 rounded-sm px-2 py-1 mb-3 font-mono text-xs focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      
+      <label for="email" class="block text-xs font-serif mb-1">Email:</label>
+      <input id="email" name="email" type="email" class="w-full border border-gray-300 rounded-sm px-2 py-1 mb-3 font-mono text-xs focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      
+      <label for="message" class="block text-xs font-serif mb-1">Message:</label>
+      <textarea id="message" name="message" rows="3" class="w-full border border-gray-300 rounded-sm px-2 py-1 mb-4 font-mono text-xs focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+      
+      <button type="submit" class="w-full bg-black text-white text-sm rounded-md py-2">Send Message</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('sendMessageForm');
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const messageInput = document.getElementById('message');
+
+    function clearErrors() {
+      const errorElem = document.getElementById('formErrors');
+      if (errorElem) {
+        errorElem.remove();
+      }
+      [nameInput, emailInput, messageInput].forEach(input => {
+        input.classList.remove('border-red-600');
+      });
+    }
+
+    function submitter(e) {
+      e.preventDefault();
+      clearErrors();
+
+      let errors = [];
+
+      if (!nameInput.value.trim()) {
+        errors.push("Name is required.");
+        nameInput.classList.add('border-red-600');
+      }
+
+      const emailVal = emailInput.value.trim();
+      if (!emailVal) {
+        errors.push("Email is required.");
+        emailInput.classList.add('border-red-600');
+      } else {
+        const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+        
+      }
+
+      if (!messageInput.value.trim()) {
+        errors.push("Message is required.");
+        messageInput.classList.add('border-red-600');
+      }
+
+      if (errors.length > 0) {
+        const errorDiv = document.createElement('div');
+        errorDiv.id = 'formErrors';
+        errorDiv.className = 'bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded mb-4 font-serif text-xs';
+        errorDiv.innerHTML = errors.map(err => `<p>${err}</p>`).join('');
+        form.prepend(errorDiv);
+
+        setTimeout(() => {
+          clearErrors();
+        }, 5000);
+
+        return;
+      }
+
+      const formData = {
+        name: nameInput.value.trim(),
+        email: emailInput.value.trim(),
+        message: messageInput.value.trim()
+      };
+
+      console.log("Form data to send:", formData);
+      form.reset();
+    }
+
+    form.addEventListener('submit', submitter);
+  </script>
+</body>
+</html>

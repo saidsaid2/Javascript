@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+const totalPopulation = 790000000;  
+
+// Countries data: name and population  
+const countries = [  
+    { name: 'China', population: 144100000 },  
+    { name: 'Country2', population: 21000000 }, // Replace with actual data if known  
+    { name: 'Country3', population: 3500000 }   // Replace with actual data if known  
+];  
+
+// Function to calculate percentage of world population  
+function calculatePercentage(population) {  
+    return (population / totalPopulation) * 100;  
+}  
+
+// Calculate China's percentage  
+const chinaPercentage = calculatePercentage(countries[0].population);  
+
+// Log the percentage for China  
+console.log(`China's percentage of the world population: ${chinaPercentage.toFixed(2)}%`);  
+
+// Initialize an array to hold results  
+let results = [];  
+
+// Loop through other countries and compare their population percentages to China's  
+for (let i = 1; i < countries.length; i++) {  
+    const country = countries[i];  
+    const countryPercentage = calculatePercentage(country.population);  
+    const isGreater = countryPercentage > chinaPercentage;  
+    results.push({  
+        country: country.name,  
+        percentage: countryPercentage,  
+        comparison: isGreater ? 'greater' : 'less or equal'  
+    });  
+}  
+
+// Output the comparison results  
+results.forEach(result => {  
+    console.log(`${result.country} has a population percentage which is ${result.comparison} than China's: ${result.percentage.toFixed(2)}%`);  
+});  
+
+// Create an 'arrow function' for creating the percentageOfWorld  
+const createPercentageOfWorld = (population) => (population / totalPopulation) * 100;  
+
+// Usage of the arrow function  
+const percentageOfWorld = createPercentageOfWorld(countries[0].population);  
+console.log(`Using arrow function, China's percentage: ${percentageOfWorld.toFixed(2)}%`);
+</script>
+</head>
+<body>
+    
+</body>
+</html>

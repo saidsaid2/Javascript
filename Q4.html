@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sort Three Numbers</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+</head>
+<body class="bg-white p-6 max-w-4xl mx-auto">
+  <main class="bg-gray-400 p-6 rounded-lg shadow-md">
+    <h2 class="font-bold text-lg mb-2 p-2 inline-block">Input Section</h2>
+
+    <p class="mb-3 text-sm leading-tight max-w-3xl">
+      Enter a number in each of the boxes below and then click one of the
+      buttons below to either sort the numbers into ascending order, or
+      descending order. The sorted numbers will be placed in the output
+      section
+    </p>
+
+    <form id="inputForm" class="mb-3">
+      <div class="grid grid-cols-3 gap-4 mb-2 max-w-3xl">
+        <label for="numA" class="text-center font-semibold">A</label>
+        <label for="numB" class="text-center font-semibold">B</label>
+        <label for="numC" class="text-center font-semibold">C</label>
+
+        <input type="text" id="numA" name="numA" autocomplete="off"
+          class="border border-gray-300 p-2 rounded bg-white" />
+        <input type="text" id="numB" name="numB" autocomplete="off"
+          class="border border-gray-300 p-2 rounded bg-white" />
+        <input type="text" id="numC" name="numC" autocomplete="off"
+          class="border border-gray-300 p-2 rounded bg-white" />
+      </div>
+
+      <div class="flex gap-2 mb-4">
+        <button
+          type="button"
+          id="ascBtn"
+          class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition"
+        >
+          Sort in Ascending Order
+        </button>
+
+        <button
+          type="button"
+          id="descBtn"
+          class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition"
+        >
+          Sort in Descending Order
+        </button>
+      </div>
+
+      <h2 class="font-bold text-lg mb-2">Output Section</h2>
+
+      <p class="mb-3 text-sm leading-tight max-w-3xl">
+        Once you click on one of the buttons, the numbers in boxes A, B, and C
+        will be sorted accordingly. The sorted numbers will then be placed in
+        these boxes.
+      </p>
+
+      <div class="grid grid-cols-3 gap-4 max-w-3xl">
+        <input
+          type="text"
+          id="outA"
+          readonly
+          class="border border-gray-400 p-2 rounded bg-white"
+          aria-label="Output box A"
+        />
+        <input
+          type="text"
+          id="outB"
+          readonly
+          class="border border-gray-400 p-2 rounded bg-white"
+          aria-label="Output box B"
+        />
+        <input
+          type="text"
+          id="outC"
+          readonly
+          class="border border-gray-400 p-2 rounded bg-white"
+          aria-label="Output box C"
+        />
+      </div>
+    </form>
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const ascBtn = document.getElementById("ascBtn");
+      const descBtn = document.getElementById("descBtn");
+
+      const inputs = [
+        document.getElementById("numA"),
+        document.getElementById("numB"),
+        document.getElementById("numC"),
+      ];
+
+      const outputs = [
+        document.getElementById("outA"),
+        document.getElementById("outB"),
+        document.getElementById("outC"),
+      ];
+
+      function sortNumbers(ascending = true) {
+        const nums = inputs.map((input) => {
+          const val = input.value.trim();
+          return val === "" ? NaN : Number(val);
+        });
+
+        if (nums.some((n) => isNaN(n))) {
+          alert("Please enter valid numbers in all input fields.");
+          outputs.forEach((out) => (out.value = ""));
+          return;
+        }
+
+        nums.sort((a, b) => (ascending ? a - b : b - a));
+        outputs.forEach((out, i) => {
+          out.value = nums[i];
+        });
+      }
+
+      ascBtn.addEventListener("click", () => sortNumbers(true));
+      descBtn.addEventListener("click", () => sortNumbers(false));
+    });
+  </script>
+</body>
+</html>

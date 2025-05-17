@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+let populations = [];  
+for (let i = 0; i < 4; i++) {  
+  populations.push(Math.floor(Math.random() * 1000000) + 100000); // Random population between 100,000 and 1,100,000  
+}  
+
+// Calculate total population  
+let totalPopulation = populations.reduce((acc, val) => acc + val, 0);  
+
+// Create percentages array  
+let percentages = populations.map(pop => (pop / totalPopulation) * 100);  
+
+// Log the results  
+console.log("Populations:", populations);  
+console.log("Percentages of total population:", percentages);
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html> 

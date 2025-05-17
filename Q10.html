@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pizza Order Form</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+</head>
+<body class="bg-white text-black font-serif p-6">
+  <div class="max-w-4xl mx-auto">
+
+    <form
+      class="border border-gray-400 p-4 bg-gray-100 text-xs max-w-3xl"
+      aria-label="Pizza Order Form"
+    >
+      <fieldset class="border border-gray-400 p-2 mb-3">
+        <legend class="text-xs font-normal px-2">PIZZA ORDER FORM</legend>
+
+        <fieldset class="border border-gray-400 p-2 mb-3">
+          <legend class="text-xs font-normal px-2">Delivery Address</legend>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+            <label class="flex items-center justify-between" for="fullName">
+              Full Name:
+              <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                placeholder="Full Name"
+                class="border border-gray-300 p-1 text-xs w-36"
+              />
+            </label>
+            <label class="flex items-center justify-between" for="streetAddress">
+              Street Address:
+              <input
+                type="text"
+                id="streetAddress"
+                name="streetAddress"
+                placeholder="Address"
+                class="border border-gray-300 p-1 text-xs w-36"
+              />
+            </label>
+            <label class="flex items-center justify-between" for="phone">
+              Phone:
+              <input
+                type="text"
+                id="phone"
+                name="phone"
+                placeholder="Phone"
+                class="border border-gray-300 p-1 text-xs w-36"
+              />
+            </label>
+            <label class="flex items-center justify-between" for="email">
+              Email:
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Email"
+                class="border border-gray-300 p-1 text-xs w-36"
+              />
+            </label>
+            <label class="flex items-center justify-between" for="password">
+              Password:
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Password"
+                class="border border-gray-300 p-1 text-xs w-36"
+              />
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="border border-gray-400 p-2 mb-3">
+          <legend class="text-xs font-normal px-2">Payment Information</legend>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs items-center">
+            <label class="flex items-center justify-between" for="cardType">
+              Card Type:
+              <select
+                id="cardType"
+                name="cardType"
+                class="border border-gray-300 p-1 text-xs w-28"
+              >
+                <option value="">--Select--</option>
+                <option>Visa</option>
+                <option>MasterCard</option>
+                <option>American Express</option>
+                <option>Discover</option>
+              </select>
+            </label>
+            <label class="flex items-center justify-between" for="cardNumber">
+              Card Number:
+              <input
+                type="text"
+                id="cardNumber"
+                name="cardNumber"
+                placeholder="Card Number"
+                class="border border-gray-300 p-1 text-xs w-36"
+              />
+            </label>
+            <label class="flex items-center justify-between" for="cardName">
+              Name on Card:
+              <input
+                type="text"
+                id="cardName"
+                name="cardName"
+                placeholder="Name"
+                class="border border-gray-300 p-1 text-xs w-36"
+              />
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="border border-gray-400 p-2">
+          <legend class="text-xs font-normal px-2">Customize Your Pizza</legend>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs items-center mb-2">
+            <label class="flex items-center justify-between" for="pizzaSize">
+              Pizza Size:
+              <select
+                id="pizzaSize"
+                name="pizzaSize"
+                class="border border-gray-300 p-1 text-xs w-28"
+              >
+                <option value="">--Select--</option>
+                <option>Large</option>
+                <option>Medium</option>
+                <option>Small</option>
+              </select>
+            </label>
+            <label class="flex items-center justify-between" for="quantity">
+              Quantity:
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                class="border border-gray-300 p-1 text-xs w-20"
+              />
+            </label>
+          </div>
+
+          <div class="mb-2 text-xs">
+            <span class="inline-block mr-2">Spices:</span>
+            <label class="inline-flex items-center mr-2">
+              <input type="checkbox" name="spices" value="Black pepper" class="mr-1" />
+              Black pepper
+            </label>
+            <label class="inline-flex items-center mr-2">
+              <input type="checkbox" name="spices" value="Bell peppers" class="mr-1" />
+              Bell peppers
+            </label>
+            <label class="inline-flex items-center">
+              <input type="checkbox" name="spices" value="Mayonnaise" class="mr-1" />
+              Mayonnaise
+            </label>
+          </div>
+
+          <div class="mb-2 text-xs">
+            <label for="otherRequirements" class="inline-block mr-2">Other Requirements (optional):</label>
+            <textarea
+              id="otherRequirements"
+              name="otherRequirements"
+              rows="2"
+              cols="20"
+              class="border border-gray-300 p-1 text-xs align-top"
+              placeholder="Any Other Requirements"
+            ></textarea>
+          </div>
+
+          <div class="mb-2 text-xs">
+            <span class="inline-block mr-2">Meat:</span>
+            <label class="inline-flex items-center mr-2">
+              <input type="radio" name="meat" value="Fish" class="mr-1" />
+              Fish
+            </label>
+            <label class="inline-flex items-center mr-2">
+              <input type="radio" name="meat" value="Cow" class="mr-1" />
+              Cow
+            </label>
+            <label class="inline-flex items-center">
+              <input type="radio" name="meat" value="Chicken" class="mr-1" />
+              Chicken
+            </label>
+          </div>
+
+          <div class="flex space-x-2">
+            <button
+              type="reset"
+              class="border border-gray-400 px-2 py-1 text-xs bg-gray-200 hover:bg-gray-300"
+            >
+              Clear Order
+            </button>
+            <button
+              type="submit"
+              class="border border-gray-400 px-2 py-1 text-xs bg-gray-200 hover:bg-gray-300"
+            >
+              Place Order
+            </button>
+          </div>
+        </fieldset>
+      </fieldset>
+    </form>
+  </div>
+
+  <!-- Validation Script -->
+  <script>
+    document.querySelector("form").addEventListener("submit", function (e) {
+      const fullName = document.getElementById("fullName").value.trim();
+      const streetAddress = document.getElementById("streetAddress").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+      const cardType = document.getElementById("cardType").value;
+      const cardNumber = document.getElementById("cardNumber").value.trim();
+      const cardName = document.getElementById("cardName").value.trim();
+      const pizzaSize = document.getElementById("pizzaSize").value;
+      const quantity = document.getElementById("quantity").value;
+      const spices = document.querySelectorAll('input[name="spices"]:checked');
+      const meat = document.querySelector('input[name="meat"]:checked');
+
+      let errorMsg = "";
+
+      if (!fullName) errorMsg += "a. Full name is required.\n";
+      if (!streetAddress) errorMsg += "b. Street address is required.\n";
+      if (!/^\d{10}$/.test(phone)) errorMsg += "c. Phone number must be exactly 10 digits.\n";
+      if (!/\S+@\S+\.\S+/.test(email)) errorMsg += "d. Invalid email address.\n";
+      if (password.length < 5 || password.length > 15) errorMsg += "e. Password must be 5–15 characters.\n";
+      if (!cardType) errorMsg += "f. Card type must be selected.\n";
+      if (!cardNumber) errorMsg += "g. Card number is required.\n";
+      if (!cardName) errorMsg += "h. Card name is required.\n";
+      if (spices.length === 0) errorMsg += "i. At least one spice must be selected.\n";
+      if (!pizzaSize) errorMsg += "j. Pizza size must be selected.\n";
+      if (!quantity || quantity <= 0) errorMsg += "k. Pizza quantity is required.\n";
+      if (!meat) errorMsg += "l. Meat selection is required.\n";
+      // m. Other requirements is optional
+
+      if (errorMsg) {
+        e.preventDefault();
+        alert("Please correct the following:\n\n" + errorMsg);
+      }
+    });
+  </script>
+</body>
+</html>
